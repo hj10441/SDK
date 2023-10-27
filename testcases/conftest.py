@@ -5,5 +5,5 @@ import pytest
 
 @pytest.fixture(scope="session",autouse=True)
 def login():
-    token = login(username='xxx', password='xxxxxx',account_type=1)
+    token = login(username='Testplatform', password='pqxY89lw*',account_type=1)
     eda_conn = EdaConnector(token=token)
