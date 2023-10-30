@@ -12,8 +12,8 @@ from en_galileo_sdk.data_access.center.data_asset_analysis_data import DataAsset
 from en_galileo_sdk.data_access.center.data_asset_connector import DataAssetConnector
 
 class TestDataAssetAnalysisData:
-    def setup_class(self):
-        self.con = DataAssetConnector()
+    def setup_class(self,login):
+        self.con = DataAssetConnector(login)
 
     def test_get_data_asset_objects(self):
         '''查询数据资产列表'''
