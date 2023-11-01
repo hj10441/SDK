@@ -1,5 +1,3 @@
-from en_galileo_sdk.data_access.eda.eda_connector import EdaConnector
-from en_galileo_sdk.data_access.eda.eda_analysis_data import EdaAnalysisData
 from en_galileo_sdk.utility.login import login
 import pytest
 
