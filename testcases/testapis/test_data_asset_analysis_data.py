@@ -31,5 +31,5 @@ class TestDataAssetAnalysisData():
         df = pd.DataFrame(tables)
         assert df.shape[0] > 0
         assert df.shape[1] > 0
-        for row in df.iterrows() :
+        for idx,row in df.iterrows() :
             assert "windturbineoperationdata_prod_galileo_windworkorder" in row['name']
