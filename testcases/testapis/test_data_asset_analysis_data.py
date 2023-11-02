@@ -16,7 +16,7 @@ import pytest
 def get_data_asset_connector(get_token):
     yield DataAssetConnector(get_token)
 
-class TestDataAssetAnalysisData:
+class TestDataAssetAnalysisData():
 
     def test_get_data_asset_objects(self,get_data_asset_connector):
         '''查询数据资产列表'''
