@@ -12,7 +12,7 @@ from en_galileo_sdk.data_access.center.data_asset_analysis_data import DataAsset
 from en_galileo_sdk.data_access.center.data_asset_connector import DataAssetConnector
 import pytest
 import allure
-from logger.LoguruLog import log
+from ...logger.LoguruLog import log
 
 @pytest.fixture(scope="module")
 def get_data_asset_connector(get_token):
