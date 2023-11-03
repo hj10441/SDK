@@ -1,4 +1,3 @@
-allure-pytest==2.13.2
-allure-python-commons==2.13.2
-dbiz-autotest-sdk==2.0.2
-loguru==0.7.2
+allure-pytest
+allure-python-commons
+loguru
