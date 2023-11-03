@@ -19,7 +19,7 @@ def get_data_asset_connector(get_token):
     yield DataAssetConnector(get_token)
 
 @allure.feature("测试数据资产获取API")
-class testDataAssetAnalysisData: 
+class TestDataAssetAnalysisData: 
     def test_get_data_asset_objects(get_data_asset_connector):
         '''查询数据资产列表'''
         data_asset_objects = get_data_asset_connector.get_data_asset_objects()
