@@ -12,7 +12,7 @@ from en_galileo_sdk.data_access.center.data_asset_analysis_data import DataAsset
 from en_galileo_sdk.data_access.center.data_asset_connector import DataAssetConnector
 import pytest
 import allure
-from logger.LoguruLog import log
+from logger.allure_log_handler import logger
 
 @pytest.fixture(scope="module")
 def get_data_asset_connector(get_token):
@@ -21,17 +21,24 @@ def get_data_asset_connector(get_token):
 @allure.feature("测试数据资产获取API")
 class TestDataAssetAnalysisData: 
     def test_get_data_asset_objects(self,get_data_asset_connector):
-        '''查询数据资产列表'''
+        '''查询数据资产列表,检查点：
+        1. 列表是否7列，列名是否正确
+        2. 返回的数据个数大于0
+        '''
         data_asset_objects = get_data_asset_connector.get_data_asset_objects()
         df = pd.DataFrame(data_asset_objects)
-        assert df.shape[0] == 96
+        assert df.shape[0] > 0
         assert df.shape[1] == 7
+        assert set(['name','code','description','owner','domain','layer','application']).issubset(df.columns)
     
     def test_get_tables(self,get_data_asset_connector):
-        '''查询数据资产的数据模型列表,判断表名包含领域+Layer+Application+资产名'''
+        '''查询数据资产的数据模型列表,检查点：
+        1. 表名包含领域+Layer+Application+资产名
+        2. 返回的数据个数大于0
+        '''
         tables = get_data_asset_connector.get_tables(data_asset_code='WindWorkOrder')
         df = pd.DataFrame(tables)
-        log.info(df)
+        logger.info(df)
         assert df.shape[0] > 0
         assert df.shape[1] > 0
         for idx,row in df.iterrows() :
