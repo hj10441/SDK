@@ -20,6 +20,7 @@ def get_data_asset_connector(get_token):
 
 @allure.feature("测试数据资产获取API")
 class TestDataAssetAnalysisData: 
+    
     def test_get_data_asset_objects(self,get_data_asset_connector):
         '''查询数据资产列表,检查点：
         1. 列表是否7列，列名是否正确
@@ -27,8 +28,9 @@ class TestDataAssetAnalysisData:
         '''
         data_asset_objects = get_data_asset_connector.get_data_asset_objects()
         df = pd.DataFrame(data_asset_objects)
-        assert df.shape[0] > 0
-        assert df.shape[1] == 7
+        logger.warning(df)
+        assert df.shape[0] > 0, "返回的数据个数应该大于0"
+        assert df.shape[1] == 7, "列数应该有7列"
         assert set(['name','code','description','owner','domain','layer','application']).issubset(df.columns)
     
     def test_get_tables(self,get_data_asset_connector):
@@ -38,8 +40,8 @@ class TestDataAssetAnalysisData:
         '''
         tables = get_data_asset_connector.get_tables(data_asset_code='WindWorkOrder')
         df = pd.DataFrame(tables)
-        logger.info(df)
-        assert df.shape[0] > 0
-        assert df.shape[1] > 0
+        logger.warning(df)
+        assert df.shape[0] > 0, "返回的数据个数应该大于0"
+        assert df.shape[1] > 0,  "返回的列数应该大于0"
         for idx,row in df.iterrows() :
             assert "windturbineoperationdata_prod_galileo_windworkorder" in row['name']
