@@ -14,6 +14,8 @@ from en_galileo_sdk.utility.exceptions import HttpResponseError
 import pytest
 import allure
 from logger.allure_log_handler import logger
+import os
+import utils.file_operation as fp
 
 @pytest.fixture(scope="module")
 def get_data_asset_connector(get_token):
@@ -26,7 +28,8 @@ class TestDataAssetAnalysisData:
     
     @allure.story("数据资产列表")
     def test_get_data_asset_objects(self,get_data_asset_connector):
-        '''查询数据资产列表,检查点：
+        '''查询数据资产列表
+        检查点：
         1. 列表是否7列，列名是否正确
         2. 返回的数据个数大于0
         '''
@@ -39,7 +42,8 @@ class TestDataAssetAnalysisData:
     
     @allure.story("数据资产的表")
     def test_get_tables(self,get_data_asset_connector):
-        '''查询数据资产的表,检查点：
+        '''查询数据资产的表
+        检查点：
         1. 表名包含领域+Layer+Application+资产名
         2. 返回的数据个数大于0
         '''
@@ -53,7 +57,8 @@ class TestDataAssetAnalysisData:
     
     @allure.story("数据资产的模型")
     def test_get_models(self,get_data_asset_connector):
-        '''查询数据资产的数据模型,检查点：
+        '''查询数据资产的数据模型
+        检查点：
         1. 列表是否2列，列名是否正确
         2. 返回的数据个数大于0
         '''
@@ -65,7 +70,8 @@ class TestDataAssetAnalysisData:
     
     @allure.story("查询表/模型的元数据信息")
     def test_get_metadata(self,get_data_asset_connector):
-        ''' 查询元数据信息,检查点:
+        ''' 查询元数据信息
+        检查点:
         1.表和模型的元数据信息都可以查看
         '''
         meta = get_data_asset_connector.get_metadata(data_asset_code=data_asset_code,
@@ -86,7 +92,8 @@ class TestDataAssetAnalysisData:
     
     @allure.story("查询资产数据-Gaia测试平台数据")
     def test_get_data_v2(self,get_data_asset_connector):
-        ''' 查询资产数据信息,检查点:
+        ''' 查询资产数据信息
+        检查点:
         1. 是否有返回值
         2. 是否根据过滤条件进行了正确筛选
         3. 排序是否起作用
@@ -105,14 +112,15 @@ class TestDataAssetAnalysisData:
             limit=8
         )
         df = pd.DataFrame(data_result)
-        df_expect = pd.read_csv('../testdata/gaia_test_result.csv')
+        df_expect = fp.read_csv_as_dataframe('gaia_test_result.csv')
         assert df.equals(df_expect) 
         
         
         
     @allure.story("没有数据资产权限时")
     def test_permission_denied(self,get_data_asset_connector):
-        '''检查点：
+        '''没有数据资产权限
+        检查点：
         1. 没有数据资产权限时，可以查表/模型 列表，但是查不了数据
         '''
         obj = DataAssetAnalysisData(get_data_asset_connector)
@@ -127,6 +135,8 @@ class TestDataAssetAnalysisData:
     @allure.story('测试翻页功能')
     @pytest.mark.skip()
     def test_next_marker(self,get_data_asset_connector):
+        '''测试翻页功能
+        '''
         # TODO v2要到3.0.5
         connections = get_data_asset_connector.list_file_connections("lmt")
 

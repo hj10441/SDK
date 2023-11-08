@@ -22,8 +22,7 @@ import allure
 
 @allure.feature("EACE仿真数据获取Demo")
 def test_ace_dataanalysis():
-    '''
-    EACE仿真数据获取Demo
+    '''EACE仿真数据获取Demo
     '''
     with allure.step("断言获取连接不为None"):
         ace_conn = AceOnlineConnector()
