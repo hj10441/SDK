@@ -14,7 +14,6 @@
 #  -疲劳载荷
 
 
-import pprint
 import pandas as pd
 from en_galileo_sdk.data_access.ace.ace_connector import AceOnlineConnector
 from en_galileo_sdk.data_access.ace.ace_analysis_data import AceAnalysisData

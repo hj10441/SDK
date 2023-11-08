@@ -14,7 +14,6 @@ from en_galileo_sdk.utility.exceptions import HttpResponseError
 import pytest
 import allure
 from logger.allure_log_handler import logger
-import os
 import utils.file_operation as fp
 
 @pytest.fixture(scope="module")
