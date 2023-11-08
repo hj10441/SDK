@@ -47,7 +47,7 @@ def test_ace_dataanalysis():
 
     with allure.step("断言文件下载是成功的"):
         file_paths = con.list_paths("SystemOperationData_ODS_EDASystemLog",include_path=paths[0]["path"])
-        assert con.download_files("SystemOperationData_ODS_EDASystemLog",file_paths=[file_paths[0]["path"]],target_dir="D:\\autotest\\sdk-download-files\\")
+        assert con.download_files("SystemOperationData_ODS_EDASystemLog",file_paths=[file_paths[0]["path"]],target_dir=fp.download_dir)
         current_time = datetime.datetime.now()
         formatted_time = current_time.strftime("%Y%m%d_%H%M")
         assert fp.check_file_exists(f"BatchDownload_{formatted_time}*.zip")
