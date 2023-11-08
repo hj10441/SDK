@@ -81,7 +81,7 @@ class TestDataAssetAnalysisData:
                         name='windturbineoperationdata_prod_galileo_windworkorder_workcategory') 
         assert df.shape[0] > 0, "返回的元数据个数应该大于0"
         assert df.shape[1]  == 3,"列数应该有3列"
-        assert set("name","type","comment").issubset(df.columns)
+        assert set(["name","type","comment"]).issubset(df.columns)
 
     
     @allure.story("查询资产数据-Gaia测试平台数据")
