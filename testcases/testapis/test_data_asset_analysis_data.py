@@ -72,14 +72,14 @@ class TestDataAssetAnalysisData:
                         data_type='table',
                         name='windturbineoperationdata_prod_galileo_windworkorder_workorder')
         df = pd.DataFrame(meta)
-        assert df.shape[0] > 0, "返回的元数据个数应该大于0"
+        assert df.shape[0] > 0, "返回的数据个数应该大于0"
         assert df.shape[1]  == 3,"列数应该有3列"
         assert set(["name","type","comment"]).issubset(df.columns)
         
         meta = get_data_asset_connector.get_metadata(data_asset_code=data_asset_code,
                         data_type='model',
                         name='windturbineoperationdata_prod_galileo_windworkorder_workcategory') 
-        assert df.shape[0] > 0, "返回的元数据个数应该大于0"
+        assert df.shape[0] > 0, "返回的数据个数应该大于0"
         assert df.shape[1]  == 3,"列数应该有3列"
         assert set(["name","type","comment"]).issubset(df.columns)
 
