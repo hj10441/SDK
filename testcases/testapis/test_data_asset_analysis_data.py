@@ -19,11 +19,10 @@ from logger.allure_log_handler import logger
 def get_data_asset_connector(get_token):
     yield DataAssetConnector(get_token)
 
+data_asset_code = "WindWorkOrder"
+
 @allure.feature("测试数据资产获取API")
 class TestDataAssetAnalysisData: 
-
-    def __init__(self):
-        self.data_asset_code = "WindWorkOrder"
     
     @allure.story("数据资产列表")
     def test_get_data_asset_objects(self,get_data_asset_connector):
@@ -44,7 +43,7 @@ class TestDataAssetAnalysisData:
         1. 表名包含领域+Layer+Application+资产名
         2. 返回的数据个数大于0
         '''
-        tables = get_data_asset_connector.get_tables(data_asset_code=self.data_asset_code )
+        tables = get_data_asset_connector.get_tables(data_asset_code=data_asset_code )
         df = pd.DataFrame(tables)
         #logger.warning(df)
         assert df.shape[0] > 0, "返回的数据个数应该大于0"
@@ -58,7 +57,7 @@ class TestDataAssetAnalysisData:
         1. 列表是否2列，列名是否正确
         2. 返回的数据个数大于0
         '''
-        tables = get_data_asset_connector.get_tables(data_asset_code=self.data_asset_code)
+        tables = get_data_asset_connector.get_tables(data_asset_code=data_asset_code)
         df = pd.DataFrame(tables)
         assert df.shape[0] > 0, "返回的模型个数应该大于0"
         assert df.shape[1]  == 2,"列数应该有2列"
@@ -69,7 +68,7 @@ class TestDataAssetAnalysisData:
         ''' 查询元数据信息,检查点:
         1.表和模型的元数据信息都可以查看
         '''
-        meta = get_data_asset_connector.get_metadata(data_asset_code=self.data_asset_code,
+        meta = get_data_asset_connector.get_metadata(data_asset_code=data_asset_code,
                         data_type='table',
                         name='windturbineoperationdata_prod_galileo_windworkorder_workorder')
         df = pd.DataFrame(meta)
@@ -77,7 +76,7 @@ class TestDataAssetAnalysisData:
         assert df.shape[1]  == 3,"列数应该有3列"
         assert set("name","type","comment").issubset(df.columns)
         
-        meta = get_data_asset_connector.get_metadata(data_asset_code=self.data_asset_code,
+        meta = get_data_asset_connector.get_metadata(data_asset_code=data_asset_code,
                         data_type='model',
                         name='windturbineoperationdata_prod_galileo_windworkorder_workcategory') 
         assert df.shape[0] > 0, "返回的元数据个数应该大于0"
