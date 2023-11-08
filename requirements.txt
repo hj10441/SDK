@@ -1,4 +1,3 @@
-# 不指定版本，因为服务器上环境是3.6
 allure-pytest
 allure-python-commons
 loguru

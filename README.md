@@ -13,4 +13,4 @@
 ## requirements
 requirements36.txt 放的是jupyter3.6 依赖的包
 requirements39.txt 放的是jupyter3.9 环境依赖的包
-本身测试用例需要的包，请放到requirements.txt文件里。
+本身测试用例需要的包，请放到requirements.txt文件里,注意：*不要指定版本，因为服务器上环境是3.6，和开发机的python版本大概率不同*
