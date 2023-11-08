@@ -61,7 +61,7 @@ class TestDataAssetAnalysisData:
         df = pd.DataFrame(tables)
         assert df.shape[0] > 0, "返回的模型个数应该大于0"
         assert df.shape[1]  == 2,"列数应该有2列"
-        assert set("name","description").issubset(df.columns)
+        assert set(["name","description"]).issubset(df.columns)
     
     @allure.story("查询表/模型的元数据信息")
     def test_get_metadata(self,get_data_asset_connector):
@@ -74,7 +74,7 @@ class TestDataAssetAnalysisData:
         df = pd.DataFrame(meta)
         assert df.shape[0] > 0, "返回的元数据个数应该大于0"
         assert df.shape[1]  == 3,"列数应该有3列"
-        assert set("name","type","comment").issubset(df.columns)
+        assert set(["name","type","comment"]).issubset(df.columns)
         
         meta = get_data_asset_connector.get_metadata(data_asset_code=data_asset_code,
                         data_type='model',
