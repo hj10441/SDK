@@ -15,9 +15,9 @@ from en_galileo_sdk.data_access.eda.eda_analysis_data import EdaAnalysisData
 import allure
 
 
-@allure.feature("数据资产文件操作Demo")
+@allure.feature("Digital Twin获取数据操作Demo")
 def test_eda_bladerootanalysis():
-    '''Digital Twin叶根弯矩极限值分布统计 Demo
+    '''Digital Twin获取数据操作 Demo
     注意：本用例不验证画图功能
     '''
     with allure.step("断言获取连接不为None"):
