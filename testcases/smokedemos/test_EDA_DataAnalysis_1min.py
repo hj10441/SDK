@@ -21,7 +21,7 @@ def test_EDA_DataAnaylysis_1min():
     with allure.step("断言能够获取到风场信息"):
         wind_farm_list=eda_conn.get_wind_farm_list()
         wind_farm_df = pd.DataFrame(wind_farm_list)
-        assert wind_farm_df[wind_farm_df.wind_farm_name.str.contains('打鼓')].abbreviation=='JXDG'
+        assert wind_farm_df[wind_farm_df.wind_farm_name.str.contains('打鼓')].iloc[0].at['abbreviation']=='JXDG'
 
 
     # ### 2.2 获取风机详情
