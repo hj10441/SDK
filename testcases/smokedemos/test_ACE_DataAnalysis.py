@@ -42,7 +42,7 @@ def test_ace_dataanalysis():
         df1 = pd.DataFrame(stat_data)
         assert df1.shape[0] ==572, "返回的数据个数应该等于572"
         assert df1.shape[1]  == 5,"列数应该有5列"
-        assert set(["dlc","case_name","mean_Blade 1_Blade root axes_Mx_root_N-m",	"mean_Blade 1_Blade root axes_My_root_N-m",	"mean_Blade 1_Blade root axes_Mxy_root_N-m"]).issubset(df.columns)
+        assert set(["dlc","case_name","mean_Blade 1_Blade root axes_Mx_root_N-m",	"mean_Blade 1_Blade root axes_My_root_N-m",	"mean_Blade 1_Blade root axes_Mxy_root_N-m"]).issubset(df1.columns)
     
     with allure.step("断言获取时序数据"):
         ts_data = ace_obj.get_timeseries_data(stat_channels, dlc = ['1.3'])
@@ -50,5 +50,5 @@ def test_ace_dataanalysis():
         top5 = df2.head()
         assert top5.shape[0] == 5, "返回的数据个数应该等于5"
         assert top5.shape[1] == 5,"列数应该有5列"
-        assert set(["dlc","case_name","mean_Blade 1_Blade root axes_Mx_root_N-m",	"mean_Blade 1_Blade root axes_My_root_N-m",	"mean_Blade 1_Blade root axes_Mxy_root_N-m"]).issubset(df.columns)
+        assert set(["dlc","case_name","mean_Blade 1_Blade root axes_Mx_root_N-m",	"mean_Blade 1_Blade root axes_My_root_N-m",	"mean_Blade 1_Blade root axes_Mxy_root_N-m"]).issubset(top5.columns)
 
