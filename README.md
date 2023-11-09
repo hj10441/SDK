@@ -4,11 +4,17 @@
 ## testcases
 存放测试用例
 
+### smokedemos
+这个文件夹里放的是jupyter demo对应的测试用例
+
 ### online bugs 
 这个文件夹里放的是线上bug对应的用例，文件名以test_{issue号}命名，例如test_22314.py
 
 ### testapis
 放的是对sdk api的校验，包括eda用户手册里提供的demo
+
+## testdata
+这个文件夹放的是测试数据
 
 ## requirements
 requirements36.txt 放的是jupyter3.6 依赖的包
