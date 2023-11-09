@@ -2,7 +2,6 @@
 # coding: utf-8
 
 import pandas as pd
-import matplotlib.pyplot as plt
 from en_galileo_sdk.data_access.center.data_asset_analysis_data import DataAssetAnalysisData
 from en_galileo_sdk.data_access.center.data_asset_connector import DataAssetConnector
 import allure
@@ -17,13 +16,6 @@ def test_ace_dataanalysis():
     with allure.step("断言获取连接不为None"):        
         con = DataAssetConnector()
         assert con is not None
-
-
-
-    # 设置字体样式和正常显示字符
-    plt.rcParams['font.sans-serif']=['SimHei']
-    plt.rcParams['axes.unicode_minus']=False
-
 
     with allure.step("断言能获取资产数据"):
         obj = DataAssetAnalysisData(con)   

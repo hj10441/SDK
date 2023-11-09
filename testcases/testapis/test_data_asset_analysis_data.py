@@ -61,7 +61,7 @@ class TestDataAssetAnalysisData:
         1. 列表是否2列，列名是否正确
         2. 返回的数据个数大于0
         '''
-        tables = get_data_asset_connector.get_tables(data_asset_code=data_asset_code)
+        tables = get_data_asset_connector.get_models(data_asset_code=data_asset_code)
         df = pd.DataFrame(tables)
         assert df.shape[0] > 0, "返回的模型个数应该大于0"
         assert df.shape[1]  == 2,"列数应该有2列"
