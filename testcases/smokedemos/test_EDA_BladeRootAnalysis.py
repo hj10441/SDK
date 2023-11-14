@@ -24,13 +24,12 @@ def test_eda_bladerootanalysis():
         dt_conn = EdaConnector()
         assert dt_conn is not None
 
-
     with allure.step("断言能正常获取数据"):
         # 1.定义数据集
         wind_farm_turbine_dict = {
             "CN-81/05": ["CN-81/05-B-001", "CN-81/05-B-006",
-                         "CN-81/05-B-018","CN-81/05-B-020"]
-                      }
+                         "CN-81/05-B-018", "CN-81/05-B-020"]
+        }
         start_time = "2020-03-01 00:00:00"
         end_time = "2020-08-30 01:00:00"
         # 2.定义筛选条件
@@ -40,11 +39,8 @@ def test_eda_bladerootanalysis():
         stat_channel_list = ["Stat_BR2EdgeBM_Max", "Stat_BR2FlapBM_Max"]
         # 3. 获取数据
         dt_obj = EdaAnalysisData(dt_conn, wind_farm_turbine_dict, start_time, end_time)
-        data = dt_obj.query_dt_data(stat_channel_list, dim_filter=dim_filter, value_filter=value_filter, group_name='wtg_alias', agg_func='max')
+        data = dt_obj.query_dt_data(stat_channel_list, dim_filter=dim_filter, value_filter=value_filter,
+                                    group_name='wtg_alias', agg_func='max')
         dt = pd.DataFrame(data)
         assert dt.shape[0] > 3, "获取的数据应该大于3条"
         assert dt.shape[1] == 4, "列数应该有4列"
-
-
-
-
